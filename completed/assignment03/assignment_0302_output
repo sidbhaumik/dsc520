@@ -1,0 +1,121 @@
+> ## Load the ggplot2 package
+> library(ggplot2)
+> library(qqplotr)
+> library(pastecs)
+> theme_set(theme_minimal())
+> ## Set the working directory to the root of your DSC 520 directory
+> setwd("/Users/siddharthabhaumik/Documents/GitHub/dsc520")
+> ## Load the `data/acs-14-1yr-s0201.csv` to
+> survey_df <- read.csv("data/acs-14-1yr-s0201.csv")
+> # Get the structure of the data frame
+> str(survey_df)
+'data.frame':	136 obs. of  8 variables:
+ $ Id                    : chr  "0500000US01073" "0500000US04013" "0500000US04019" "0500000US06001" ...
+ $ Id2                   : int  1073 4013 4019 6001 6013 6019 6029 6037 6059 6065 ...
+ $ Geography             : chr  "Jefferson County, Alabama" "Maricopa County, Arizona" "Pima County, Arizona" "Alameda County, California" ...
+ $ PopGroupID            : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ POPGROUP.display.label: chr  "Total population" "Total population" "Total population" "Total population" ...
+ $ RacesReported         : int  660793 4087191 1004516 1610921 1111339 965974 874589 10116705 3145515 2329271 ...
+ $ HSDegree              : num  89.1 86.8 88 86.9 88.8 73.6 74.5 77.5 84.6 80.6 ...
+ $ BachDegree            : num  30.5 30.2 30.8 42.8 39.7 19.7 15.4 30.3 38 20.7 ...
+> # Get summary of data in Data Frame
+> summary(survey_df)
+      Id                 Id2         Geography           PopGroupID POPGROUP.display.label
+ Length:136         Min.   : 1073   Length:136         Min.   :1    Length:136            
+ Class :character   1st Qu.:12082   Class :character   1st Qu.:1    Class :character      
+ Mode  :character   Median :26112   Mode  :character   Median :1    Mode  :character      
+                    Mean   :26833                      Mean   :1                          
+                    3rd Qu.:39123                      3rd Qu.:1                          
+                    Max.   :55079                      Max.   :1                          
+ RacesReported         HSDegree       BachDegree   
+ Min.   :  500292   Min.   :62.20   Min.   :15.40  
+ 1st Qu.:  631380   1st Qu.:85.50   1st Qu.:29.65  
+ Median :  832708   Median :88.70   Median :34.10  
+ Mean   : 1144401   Mean   :87.63   Mean   :35.46  
+ 3rd Qu.: 1216862   3rd Qu.:90.75   3rd Qu.:42.08  
+ Max.   :10116705   Max.   :95.50   Max.   :60.30  
+> #Another way for getting Summary/Descriptive statistics
+> stat.desc(survey_df)
+         Id          Id2 Geography PopGroupID POPGROUP.display.label RacesReported     HSDegree
+nbr.val  NA 1.360000e+02        NA        136                     NA  1.360000e+02 1.360000e+02
+nbr.null NA 0.000000e+00        NA          0                     NA  0.000000e+00 0.000000e+00
+nbr.na   NA 0.000000e+00        NA          0                     NA  0.000000e+00 0.000000e+00
+min      NA 1.073000e+03        NA          1                     NA  5.002920e+05 6.220000e+01
+max      NA 5.507900e+04        NA          1                     NA  1.011670e+07 9.550000e+01
+range    NA 5.400600e+04        NA          0                     NA  9.616413e+06 3.330000e+01
+sum      NA 3.649306e+06        NA        136                     NA  1.556385e+08 1.191800e+04
+median   NA 2.611200e+04        NA          1                     NA  8.327075e+05 8.870000e+01
+mean     NA 2.683313e+04        NA          1                     NA  1.144401e+06 8.763235e+01
+SE.mean  NA 1.323036e+03        NA          0                     NA  9.351028e+04 4.388598e-01
+CI.mean  NA 2.616557e+03        NA          0                     NA  1.849346e+05 8.679296e-01
+var      NA 2.380576e+08        NA          0                     NA  1.189207e+12 2.619332e+01
+std.dev  NA 1.542911e+04        NA          0                     NA  1.090508e+06 5.117941e+00
+coef.var NA 5.750024e-01        NA          0                     NA  9.529072e-01 5.840241e-02
+           BachDegree
+nbr.val   136.0000000
+nbr.null    0.0000000
+nbr.na      0.0000000
+min        15.4000000
+max        60.3000000
+range      44.9000000
+sum      4822.7000000
+median     34.1000000
+mean       35.4610294
+SE.mean     0.8154527
+CI.mean     1.6127146
+var        90.4349886
+std.dev     9.5097313
+coef.var    0.2681741
+> # Display the num of rows in the Data Frame
+> nrow(survey_df)
+[1] 136
+> # Display the num of columns in the Data Frame
+> ncol(survey_df)
+[1] 8
+> # Create a Histogram of the HSDegree variable using the ggplot2 package.
+> # Set a bin size for the Histogram.
+> # Include a Title and appropriate X/Y axis labels on your Histogram Plot.
+> hist.HSDegree <- ggplot(survey_df, aes(HSDegree))  + geom_histogram(aes(y = ..density..), colour = "black", fill = "grey", bins = 20) + labs(title = "HSDegree Histogram", x = "Distribution based on HSdegree", y = "Density")
+> # Display Histogram
+> print(hist.HSDegree)
+> #  Include a normal curve to the Histogram that you plotted.
+> # Adding another layer to the above chart, the normal curve
+> hist.HSDegree + stat_function(fun = dnorm, args = list(mean = mean(survey_df$HSDegree, na.rm = TRUE), sd = sd(survey_df$HSDegree, na.rm = TRUE)), colour = "black", size = 1)
+> # Probability Plot of the HSDegree variable
+> # creating random data
+> random_values = rnorm(survey_df$HSDegree, mean = 90, sd = 50)
+> # plotting data with proper labels
+> # And adding line with proper properties
+> ggplot(mapping = aes(sample = random_values)) + stat_qq_point(size = 2,color = "red") + stat_qq_line(color="green") + labs(title = "HSDegree Probability Plot", x = "Distribution based on HSdegree", y = "Density")
+> # Now that you have looked at this data visually for normality, you will now quantify normality with numbers using the stat.desc() function.
+> stat.desc(survey_df)
+         Id          Id2 Geography PopGroupID POPGROUP.display.label RacesReported     HSDegree
+nbr.val  NA 1.360000e+02        NA        136                     NA  1.360000e+02 1.360000e+02
+nbr.null NA 0.000000e+00        NA          0                     NA  0.000000e+00 0.000000e+00
+nbr.na   NA 0.000000e+00        NA          0                     NA  0.000000e+00 0.000000e+00
+min      NA 1.073000e+03        NA          1                     NA  5.002920e+05 6.220000e+01
+max      NA 5.507900e+04        NA          1                     NA  1.011670e+07 9.550000e+01
+range    NA 5.400600e+04        NA          0                     NA  9.616413e+06 3.330000e+01
+sum      NA 3.649306e+06        NA        136                     NA  1.556385e+08 1.191800e+04
+median   NA 2.611200e+04        NA          1                     NA  8.327075e+05 8.870000e+01
+mean     NA 2.683313e+04        NA          1                     NA  1.144401e+06 8.763235e+01
+SE.mean  NA 1.323036e+03        NA          0                     NA  9.351028e+04 4.388598e-01
+CI.mean  NA 2.616557e+03        NA          0                     NA  1.849346e+05 8.679296e-01
+var      NA 2.380576e+08        NA          0                     NA  1.189207e+12 2.619332e+01
+std.dev  NA 1.542911e+04        NA          0                     NA  1.090508e+06 5.117941e+00
+coef.var NA 5.750024e-01        NA          0                     NA  9.529072e-01 5.840241e-02
+           BachDegree
+nbr.val   136.0000000
+nbr.null    0.0000000
+nbr.na      0.0000000
+min        15.4000000
+max        60.3000000
+range      44.9000000
+sum      4822.7000000
+median     34.1000000
+mean       35.4610294
+SE.mean     0.8154527
+CI.mean     1.6127146
+var        90.4349886
+std.dev     9.5097313
+coef.var    0.2681741
