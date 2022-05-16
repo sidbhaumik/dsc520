@@ -13,25 +13,26 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Introduction
 
----
-Mental health disorders are one of the leading health issues in the United States and 
-it affects almost 10% of the population. This has significantly increased since the beginning of Covid19 pandemic 
-and is not just seen in adults but children and young adults as well.
+-   Mental health disorders are one of the leading health issues in the United States and 
+    it affects almost 10% of the population. This has significantly increased since the beginning of Covid19 pandemic 
+    and is not just seen in adults but children and young adults as well.
 
-Mental health awareness is another significant problem as lot of people are unaware of their problems until 
-those turn into severe health issues like anxiety, depression, and other life-threatening risks.
+-   Mental health awareness is another significant problem as lot of people are unaware of their problems until 
+    those turn into severe health issues like anxiety, depression, and other life-threatening risks.
 
-Also, many people don’t know how to or from where to get help. Or they feel ashamed talking about their 
-condition as that may impact their relationship both personally and professionally as well as their growth in life and at workplace.
+-   Also, many people don’t know how to or from where to get help. Or they feel ashamed talking about their 
+    condition as that may impact their relationship both personally and professionally as well as their growth 
+    in life and at workplace.
 
-Another important thing to note is that in U.S there is a shortage in certified mental health professionals.
+-   Another important thing to note is that in U.S there is a shortage in certified mental health professionals.
 
-Data Science/Artificial Intelligence can play an important part here by bridging some of the current gaps in Mental Healthcare sector.
----
+-   Data Science/Artificial Intelligence can play an important part here by bridging some of the current gaps 
+    in Mental Healthcare sector.
+
 
 ## Research Questions
 
----
+
 1.	With so much patient data now available digitally like health reports, lab reports, social media interactions,
     etc.,different AI tools and techniques can analyze patient’s data and flag physical and mental states. 
     This can help in early detection and remedies.
@@ -51,15 +52,21 @@ Data Science/Artificial Intelligence can play an important part here by bridging
     This is not specific to any age group as all are vulnerable and not specific to any particular location 
     as it can happen anywhere from home,school,workplace, etc. So, self awareness as well as guidance,support
     and counselling is needed at the earliest possible stage.
----
+    
+    
 
 ## Approach
 
 ---
-I plan to focus most on awareness because that's what I think is lacking globally and specially more in third world countries.
+I plan to focus most on awareness because that's what I think is lacking globally and specially more in third world nations.
 Timely treatment is the key to success.
-Every person has a mobile device now with access to internet. With the help of Data Science/AI, mental health apps can be created which can help a person with self-assessment, morale boost with positive conversations, cognitive therapy, mind games and other related stuffs. While doing initial research I found some AI apps already in the market which is a good sign but these can be enhanced further with additional features/capabilities.
+Every person has a mobile device now with access to internet. With the help of Data Science/AI, mental health apps 
+can be created which can help a person with self-assessment, morale boost with positive conversations, 
+cognitive therapy, mind games and other related stuffs. 
+While doing initial research I found some AI apps already in the market which is a good sign but these 
+can be enhanced further with additional features/capabilities.
 ---
+
 
 ## Approach Outcome
 
@@ -68,6 +75,7 @@ Awareness is the key but there are other aspects as well like proper medical tre
 Data Science can definitely help in these areas but my focus is more towards awareness. 
 So, my approach partially addresses this problem.
 ---
+
 
 ## Datasets/Citations
 
@@ -81,6 +89,7 @@ So, my approach partially addresses this problem.
 -   "Any Mental Illness in the Past Year among Adults Aged 18 or Older, by State: 2018-2019" dataset from SAMHDA.gov <https://pdas.samhsa.gov/saes/state> 
     This dataset is maintained by 'Substance Abuse & Mental Health Data Archive' government agency and contains any type of 
     mental health related issues in adults aged 18 and older for the year 2018-2019.
+
 
 ## Required Libraries
 
@@ -96,6 +105,7 @@ library(corrplot)
 library(car)
 theme_set(theme_minimal())
 ---
+
 
 ## Plots and Tables
 
