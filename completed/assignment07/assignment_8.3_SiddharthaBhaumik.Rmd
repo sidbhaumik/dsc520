@@ -1,0 +1,105 @@
+---
+title: "MENTAL HEALTHCARE"
+subtitle: "ASSIGNMENT 8.3"
+author: "Siddhartha Bhaumik"
+date: '2022-05-14'
+output:
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+---
+Mental health disorders are one of the leading health issues in the United States and 
+it affects almost 10% of the population. This has significantly increased since the beginning of Covid19 pandemic 
+and is not just seen in adults but children and young adults as well.
+
+Mental health awareness is another significant problem as lot of people are unaware of their problems until 
+those turn into severe health issues like anxiety, depression, and other life-threatening risks.
+
+Also, many people don’t know how to or from where to get help. Or they feel ashamed talking about their 
+condition as that may impact their relationship both personally and professionally as well as their growth in life and at workplace.
+
+Another important thing to note is that in U.S there is a shortage in certified mental health professionals.
+
+Data Science/Artificial Intelligence can play an important part here by bridging some of the current gaps in Mental Healthcare sector.
+---
+
+## Research Questions
+
+---
+1.	With so much patient data now available digitally like health reports, lab reports, social media interactions,
+    etc.,different AI tools and techniques can analyze patient’s data and flag physical and mental states. 
+    This can help in early detection and remedies.
+2.	Lot of people are hesitant to open in front of doctors and therapists because of stigma or fear of being judged.         
+    People tend to trust a robot more since it won’t judge, is unbiased and can provide instant answers to        
+    health-related questions. 
+    Several fitness gadgets are in market which can track your sleep, heart rate, blood pressure, etc. and 
+    can share that information through apps which can further evaluate and predict your overall health.
+    I see some AI desktop/mobile apps in market for self-assessment and therapy which can be very useful 
+    if enhanced further and marketed properly.
+3.	Machine learning and Deep learning can provide greater accuracy in diagnosing mental health conditions 
+    and predicting patient outcomes. So, they can assist doctors and therapists in providing better treatment.
+4.  A major issue which I see with Data Science/AI in mental health sector is privacy. 
+    All sensitive information related to a particular person is available to an AI software and if misused
+    or breached can cause greater damage physically, mentally, and financially.
+5.  Mental health is often overlooked which many times leads up to serious health issues. 
+    This is not specific to any age group as all are vulnerable and not specific to any particular location 
+    as it can happen anywhere from home,school,workplace, etc. So, self awareness as well as guidance,support
+    and counselling is needed at the earliest possible stage.
+---
+
+## Approach
+
+---
+I plan to focus most on awareness because that's what I think is lacking globally and specially more in third world countries.
+Timely treatment is the key to success.
+Every person has a mobile device now with access to internet. With the help of Data Science/AI, mental health apps can be created which can help a person with self-assessment, morale boost with positive conversations, cognitive therapy, mind games and other related stuffs. While doing initial research I found some AI apps already in the market which is a good sign but these can be enhanced further with additional features/capabilities.
+---
+
+## Approach Outcome
+
+---
+Awareness is the key but there are other aspects as well like proper medical treatments and therapies for mental patients. 
+Data Science can definitely help in these areas but my focus is more towards awareness. 
+So, my approach partially addresses this problem.
+---
+
+## Datasets/Citations
+
+-   "COVID-19 and Mental Health Search Terms" dataset from Kaggle. <https://www.kaggle.com/datasets/luckybro/mental-health-search-term>     The search interest of mental health related terms on Google before and after the outbreak of COVID-19 pandemic\
+    reveals how public's concern is affected by the pandemic, and its impact to mental health of people around the world.
+
+-   "Mental Health in Tech Survey" dataset from Kaggle <https://www.kaggle.com/datasets/osmi/mental-health-in-tech-survey> 
+    This dataset is from a 2014 survey that measures attitudes towards mental health and frequency of mental health\
+    disorders in the tech workplace.
+
+-   "Any Mental Illness in the Past Year among Adults Aged 18 or Older, by State: 2018-2019" dataset from SAMHDA.gov <https://pdas.samhsa.gov/saes/state> 
+    This dataset is maintained by 'Substance Abuse & Mental Health Data Archive' government agency and contains any type of 
+    mental health related issues in adults aged 18 and older for the year 2018-2019.
+
+## Required Libraries
+
+---
+library(ggplot2)
+library(pastecs)
+library(dplyr)
+library(purrr)
+library(stringr)
+library(lm.beta)
+library(tidyverse)
+library(corrplot)
+library(car)
+theme_set(theme_minimal())
+---
+
+## Plots and Tables
+
+---
+I believe histograms and box plots will be useful in visualizing the data.
+Regarding tables, I plan to explore 'gt' package as it looks simple yet powerful.
+---
