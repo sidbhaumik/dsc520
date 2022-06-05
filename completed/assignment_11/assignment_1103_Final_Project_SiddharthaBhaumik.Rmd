@@ -69,7 +69,7 @@ state_dep_mental_df <- read.csv("/Users/siddharthabhaumik/Documents/GitHub/dsc52
 ## Load 'Received Mentalhealth services in Past Year Data' from 51 US states to
 state_rcvd_mental_df <- read.csv("/Users/siddharthabhaumik/Documents/GitHub/dsc520/data/map_data_dep.csv")
 
-# Covid19 US dataset
+### Covid19 US dataset
 covid19_us_df <- readxl::read_excel("/Users/siddharthabhaumik/Documents/GitHub/dsc520/data/search_term_us.xlsx")
 
 ## Load the 'Mental Health in Tech Survey' to
@@ -78,40 +78,46 @@ tech_survey_df <- read.csv("/Users/siddharthabhaumik/Documents/GitHub/dsc520/sur
 ## Viewing US Sample data related to 'Covid19 & Mental health effect/awareness'
 head(covid19_us_df)
 
-#summary
+## summary
 summary(covid19_us_df)
 
-# plot
+## plot
 boxplot(covid19_us_df[-1], col = "red", varwidth = TRUE, xlab = "Mental Health Disorders")
 
-## During Covid19 pandemic, The mental health related search terms like "depression", "anxiety", "ocd", etc. increased significantly on google search engine.
-## This shows people either impacted directly or hearing from someone from their family and friends. But, it shows increased awareness and looking for options on the internet to address this problem.
-## From this dataset I can see Depression, Anxiety and counseling are the top 3 search items but other than that not much information can be extracted from this dataset.
+# During Covid19 pandemic, The mental health related search terms like "depression", 
+# "anxiety", "ocd", etc. increased significantly on google search engine.
 
-# US States Mental Heath Data
+# This shows people either impacted directly or hearing from someone from their family
+# and friends. But, it shows increased awareness and looking for options on the internet 
+# to address this problem.
+# From this dataset I can see Depression, Anxiety and counseling are the top 3 search 
+# items but other than that not much information can be extracted from this dataset.
+
+### US States Mental Heath Data
+
 ## Viewing Sample data from 'Any mental illness/past year' dataset
 head(state_any_mental_df)
 
 str(state_any_mental_df)
 
-#Plot
+## Plot
 ggplot(state_any_mental_df, aes(x = state, y = estimate)) +
   geom_point(size = 2.5, color = "red") + 
   geom_segment(aes(x = state, xend = state, y = 0, yend = estimate)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.7)) # Rotate axis label
 
-## The top 3 states with any mental illness in year 2018-19 are Utah, West Virginia & Oregon.
+# The top 3 states with any mental illness in year 2018-19 are Utah, West Virginia & Oregon.
 
 ## Viewing Sample data from 'Major depressive episode/past year' dataset
 head(state_dep_mental_df)
 
-# Plot
+## Plot
 ggplot(state_dep_mental_df, aes(x = state, y = estimate)) +
   geom_point(size = 2.5, color = "red") + 
   geom_segment(aes(x = state, xend = state, y = 0, yend = estimate)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.7)) # Rotate axis label
 
-## The top 3 states with major depressive episode in year 2018-19 are Utah, Oregon & West Virginia.
+#The top 3 states with major depressive episode in year 2018-19 are Utah, Oregon & West Virginia.
 
 ## Viewing Sample data from 'Received Mental health services/past year' dataset
 head(state_rcvd_mental_df)
@@ -122,12 +128,17 @@ ggplot(state_rcvd_mental_df, aes(x = state, y = estimate)) +
   geom_segment(aes(x = state, xend = state, y = 0, yend = estimate)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.7)) # Rotate axis label
 
-## The top 3 states with people receiving mental health related services in year 2018-19 are Vermont, Massachusetts & Maine.
+#The top 3 states with people receiving mental health related services in year 2018-19 
+# are Vermont, Massachusetts & Maine.
 
-## So, based on the plots, we can see that Utah, Oregon and West Virginia are the top 3 states for any mental health illness as well as major depressive episodes.
-## But, from treatment perspective, none of the 3 are in the top 3 list. This shows that even though lot of cases are reported, still not everyone is availing any kind of treatments.
+# So, based on the plots, we can see that Utah, Oregon and West Virginia are the 
+# top 3 states for any mental health illness as well as major depressive episodes.
 
-# Mental health at Work place
+# But, from treatment perspective, none of the 3 are in the top 3 list. 
+# This shows that even though lot of cases are reported, still not everyone is 
+# availing any kind of treatments.
+
+### Mental health at Work place
 
 tech_survey_upd_df <- tech_survey_df %>% filter(Country == "United States") %>% filter(Age > 12) %>% select(Age,Gender,family_history,treatment,remote_work,work_interfere,benefits,wellness_program,seek_help,anonymity,mental_health_consequence,obs_consequence)
 
@@ -159,12 +170,14 @@ tech_survey_upd_df["Gender"][tech_survey_upd_df["Gender"] == "Female (trans)" | 
 head(tech_survey_upd_df)
 
 
-## Only considering survey results from United States as its the majority.
-## Noticed some negative numbers under 'Age' column which I will filter out.
-## Under 'Gender' column, I see lot of variation and spelling error like Male,Mail,maile, M, Cis Male, Female, Cis Female, etc. I will make it consistent as Male, Female, Other.  
-## Dropped some columns like State, No of Employee, Tech company, etc. as I don't think they add much value.  
+# Only considering survey results from United States as its the majority.
+# Noticed some negative numbers under 'Age' column which I will filter out.
+# Under 'Gender' column, I see lot of variation and spelling error like Male,Mail,maile,
+# M, Cis Male, Female, Cis Female, etc. I will make it consistent as Male, Female, Other.  
+# Dropped some columns like State, No of Employee, Tech company, etc. as I don't think 
+# they add much value.  
 
-## Basically I am looking for how many people opted for 'Treatment'.
+# Basically I am looking for how many people opted for 'Treatment'.
 
 ## Viewing Mental health in US Tech industry
 head(tech_survey_upd_df)
@@ -211,11 +224,16 @@ ggplot(tech_survey_upd_df2, aes(x=treatment, y=family_history, col=seek_help)) +
 
 plot(tech_survey_upd_df2)
 
-# My target variable here is 'treatment'.Workplaces which promotes mental health and support their employees through different benefits
-# and wellness programs will see more people opting for treatments and other kind of help if needed.
-# I see more Male population tied to mental health but I see the ratio of male population much higher than female and others in the dataset.
+# My target variable here is 'treatment'.Workplaces which promotes mental health and 
+# support their employees through different benefits and wellness programs will see more
+# people opting for treatments and other kind of help if needed.
+
+# I see more Male population tied to mental health but I see the ratio of male population 
+# much higher than female and others in the dataset.
 # This can be due to more Male working in the tech industry or the survey population is biased.
-# I also looked at family history to see if those people tend to be more aware qnd seek help if needed but didnt see much correlation.
+
+# I also looked at family history to see if those people tend to be more aware qnd 
+# seek help if needed but didnt see much correlation.
 ```
 
 ## Limitations
